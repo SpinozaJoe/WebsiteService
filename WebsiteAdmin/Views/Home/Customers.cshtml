@@ -1,0 +1,77 @@
+﻿@model IEnumerable<WebsiteCommon.Client.Customer>
+
+@{
+    ViewBag.Title = "Customers";
+}
+
+@section Scripts{
+    <script src="~/js/dynamic-tables.js"></script>
+}
+
+
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">@ViewBag.Title</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    All Customers
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="dataTable_wrapper">
+                        <table class="table table-responsive" id="dynamicTable" custom-submitpage="EditCustomer">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Last name</th>
+                                    <th>First name</th>
+                                    <th>Email address</th>
+                                    <th>Number of applications</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var c in Model)
+                                {
+                                    <tr class="odd gradeX">
+                                        <td>@c.Id</td>
+                                        <td>@c.LastName</td>
+                                        <td>@c.FirstName</td>
+                                        <td>
+                                            @if (c.ContactDetails != null)
+                                            {
+                                                @c.ContactDetails.EmailAddress
+                                            }
+                                        </td>
+                                        <td>@c.Applications.Count()</td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+    <div class="row">
+        <hr />
+        <div class="actionCommands">
+            @Html.ActionLink("Create Customer", "NewCustomer", "Home", null, new { type = "button", Class = "btn btn-primary" })
+        </div>
+    </div>
+
+
+</div>
+<!-- /#page-wrapper -->

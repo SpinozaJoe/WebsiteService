@@ -1,0 +1,29 @@
+﻿@using WebsiteCommon.Applications
+@model WebsiteAdmin.Models.ApplicationViewModel
+
+<div class="row">
+    <div class="form-group col-lg-12">
+        <h4>Customer Details</h4>
+    </div>
+    <div class="form-group col-lg-4">
+        @Html.LabelFor(m => m.SelectedApplicationType)
+        @Html.DropDownListFor(m => m.SelectedApplicationType, Model.ApplicationTypes, new { @class = "form-control" })
+    </div>
+    <div class="form-group col-lg-8">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group col-lg-12">
+        @Html.LabelFor(m => m.OriginUrls)
+        @Html.TextBoxFor(m => m.OriginUrls, new { @class = "form-control" })
+    </div>
+    <div class="form-group col-lg-12">
+        @Html.LabelFor(m => m.IPAccessRestrictions)
+        @Html.TextBoxFor(m => m.IPAccessRestrictions, new { @class = "form-control" })
+    </div>
+    <div class="form-group col-lg-12">
+        @Html.LabelFor(m => m.ToAddresses, new { @class = "toAddresses hidden" })
+        @Html.TextBoxFor(m => m.ToAddresses, new { @class = "form-control toAddresses hidden" })
+    </div>
+</div>
+
